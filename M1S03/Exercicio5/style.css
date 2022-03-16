@@ -1,0 +1,18 @@
+body {
+    min-height: 100vh;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+
+
+#acesso {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2em;
+    color: rgb(76, 151, 1);
+}
+
+#relogio {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2em;
+    color: rgb(76, 151, 1);
+}
