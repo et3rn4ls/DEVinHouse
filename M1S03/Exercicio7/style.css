@@ -1,0 +1,12 @@
+body {
+    min-height: 100vh;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+
+#corpo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2em;
+    color: rgb(7, 112, 39);
+    text-align: center;
+}
