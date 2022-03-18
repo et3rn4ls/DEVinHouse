@@ -35,7 +35,6 @@ function addLinha(newItem) {
 
 function delItem() {
     var oldItem = document.getElementById("item").value;
-    /* var oldItem = window.prompt("Informe o nome do item que deseja remover:"); */
     const index = lista.indexOf(oldItem);
 
     if (index > -1) {
