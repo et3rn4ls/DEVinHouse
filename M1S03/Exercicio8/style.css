@@ -1,0 +1,21 @@
+body {
+    min-height: 100vh; 
+    text-align: center;
+}
+
+.corpo {
+    font-family: 'Indie Flower', cursive;
+    font-size: 2em;
+    color: rgb(1, 28, 148);
+    text-align: center;
+}
+
+#add {
+    color: white;
+}
+
+#lista {
+    text-align:justify;
+    font-size: 20px;
+    color: black;
+}
