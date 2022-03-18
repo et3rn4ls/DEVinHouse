@@ -5,6 +5,9 @@ add.addEventListener('click', addItem);
 var del = document.getElementById("del");
 del.addEventListener('click', delItem);
 
+var save = document.getElementById("save");
+save.addEventListener('click', salvaLista);
+
 var ul = document.getElementById("lista");
 
 function addItem() {  
@@ -14,6 +17,7 @@ function addItem() {
         if (!lista.includes(newItem)) {
             lista.push(newItem);
             addLinha(newItem);
+            salvaLista();
             document.getElementById("retorno").innerHTML = `Adicionado ${newItem} à sua lista!`;
             document.getElementById("item").value = '';
             setTimeout(function() {
@@ -43,6 +47,8 @@ function delItem() {
         var li = ul.children[index];
         ul.removeChild(li);
 
+        salvaLista();
+
         document.getElementById("retorno").innerHTML = `Removido ${oldItem} da sua lista!`;
         document.getElementById("item").value = '';
         setTimeout(function() {
@@ -51,4 +57,8 @@ function delItem() {
     } else {
         alert("Item não encontrado na lista de compras!");
     }
+}
+
+function salvaLista() {
+    window.localStorage.setItem('meusItens', JSON.stringify(lista));
 }
