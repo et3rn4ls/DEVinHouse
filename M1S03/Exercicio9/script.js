@@ -60,5 +60,11 @@ function delItem() {
 }
 
 function salvaLista() {
-    window.localStorage.setItem('meusItens', JSON.stringify(lista));
+    localStorage.setItem('meusItens', JSON.stringify(lista));
+
+    document.getElementById("retorno").innerHTML = `A sua lista foi salva!`;
+    document.getElementById("item").value = '';
+    setTimeout(function() {
+        document.getElementById("retorno").innerHTML = '';
+    }, 1000)    
 }

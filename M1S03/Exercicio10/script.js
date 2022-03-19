@@ -2,7 +2,9 @@ var lista = [];
 var ul = document.getElementById("lista");
 
 var add = document.getElementById("add");
-add.addEventListener('click', addItem);
+add.addEventListener('click', function () {
+    addItem(document.getElementById("item").value);
+})
 
 var del = document.getElementById("del");
 del.addEventListener('click', delItem);
@@ -13,14 +15,13 @@ save.addEventListener('click', salvaLista);
 var load = document.getElementById("load");
 load.addEventListener('click', carregaLista);
 
-function addItem() {  
-    var newItem = document.getElementById("item").value;
-    
+function addItem(newItem) {      
     if (newItem.length !== 0) {
         if (!lista.includes(newItem)) {
             lista.push(newItem);
             addLinha(newItem);
             salvaLista();
+
             document.getElementById("retorno").innerHTML = `Adicionado ${newItem} à sua lista!`;
             document.getElementById("item").value = '';
             setTimeout(function() {
@@ -46,10 +47,8 @@ function delItem() {
 
     if (index > -1) {
         lista.splice(index, 1);
-
         var li = ul.children[index];
         ul.removeChild(li);
-
         salvaLista();
 
         document.getElementById("retorno").innerHTML = `Removido ${oldItem} da sua lista!`;
@@ -64,6 +63,12 @@ function delItem() {
 
 function salvaLista() {
     localStorage.setItem('meusItens', JSON.stringify(lista));
+
+    document.getElementById("retorno").innerHTML = `A sua lista foi salva!`;
+    document.getElementById("item").value = '';
+    setTimeout(function() {
+        document.getElementById("retorno").innerHTML = '';
+    }, 1000)    
 }
 
 function carregaLista() {
@@ -75,9 +80,8 @@ function carregaLista() {
         for (let i = 0; i < listaRecup.length; i++) {
             console.log(listaRecup[i]);
             var loadItem = listaRecup[i];
-            // addItem(loadItem);            
+            addItem(loadItem);            
         }
-        alert("Funcionalidade em manutenção!");
     } else {
         alert("Não foi encontrada uma lista de compras!");
     }
