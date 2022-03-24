@@ -6,11 +6,11 @@ class Transacoes {
     }
 
     set transfere(valor) {
-        this.saldo = this.saldo - valor;
+        this.saldo -= valor;
     }
 
     set deposita(valor) {
-        this.saldo = this.saldo + valor;
+        this.saldo += valor;
     }
 
     get novoSaldo() {
