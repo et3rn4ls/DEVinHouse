@@ -13,3 +13,5 @@ async function novaImagem(){
           document.getElementById("retorno").innerHTML = `Ocorreu um erro: ${err}!`
     }
 }
+
+novaImagem();
