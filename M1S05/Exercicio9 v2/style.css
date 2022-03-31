@@ -1,0 +1,19 @@
+body {
+    min-height: 100vh;
+    text-align: center;
+}
+
+.corpo {
+    font-family: 'Indie Flower', cursive;
+    font-size: 2em;
+    color: rgb(1, 28, 148);
+    text-align: center;
+}
+
+input {
+    size: 20px;
+}
+
+p {
+    color: red;
+}
