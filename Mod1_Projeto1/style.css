@@ -1,12 +1,15 @@
-.corpo {
-    font-family: 'Indie Flower', cursive;
-    color: rgb(1, 28, 148);
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
+}
+
+header {
+    color: rgb(1, 28, 148);
     font-size: 30px;
 }
 
 input {
-    font-size: 20px;
+    font-size: 17px;
 }
 
 p {
