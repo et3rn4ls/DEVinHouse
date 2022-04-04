@@ -8,6 +8,9 @@ function buscaCEPpromise(){
             .then(conteudo => {
                 document.getElementById("retorno").innerHTML = `Cidade: ${conteudo.localidade}`
             })
+            .catch(err => {
+              console.log(err);
+          });
         }
-    })
+    });
 }

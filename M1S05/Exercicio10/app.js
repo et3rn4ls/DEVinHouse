@@ -14,4 +14,12 @@ async function novaImagem(){
     }
 }
 
-novaImagem();
+// forma 1
+//novaImagem();
+
+// forma 2 
+//document.onload = novaImagem();
+
+//  forma 3
+window.onload = novaImagem();
+
