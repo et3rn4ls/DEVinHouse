@@ -1,15 +1,15 @@
 <template>
   <div class="cronometro">
-      <button class="btn btn-outline-dark btn-sm" @click="play">{{timer !== null ? "PAUSAR" :"VAI" }}</button>
-      <button class="btn btn-outline-dark btn-sm" @click="clear">LIMPAR</button>
+      <button class="btn btn-outline-info btn-sm" @click="play">{{timer !== null ? "PAUSAR" :"VAI" }}</button>
+      <button class="btn btn-outline-info btn-sm" @click="clear">LIMPAR</button>
       <br><br>
       <a class="timer">{{zfill(hour)}}:{{zfill(min)}}:{{zfill(sec)}}</a>
       <div class="interval" v-show="intervalList.length > 0">
       <br><br>
-      <ul>
-        <li v-for="interval in intervalList" :key="interval" >VOCÊ PAUSOU EM {{interval}}</li>
+      <ul type="none">
+        <li v-for="interval in intervalList" :key="interval" >{{interval}}</li>
       </ul>
-      <button class="btn btn-outline-dark btn-sm" @click="clearIntervalList">LIMPAR HISTÓRICO</button>
+      <button class="btn btn-outline-danger btn-sm" @click="clearIntervalList">LIMPAR HISTÓRICO</button>
     </div>
   </div>
 </template>
