@@ -12,7 +12,7 @@
           <input type="number" v-model="pessoa.idade">
         </div>
         <div class="col-sm-12">
-          <button type="submit" class="btn btn-primary btn-sm">Adicionar</button>
+          <button type="submit" class="btn btn-outline-primary btn-sm">Adicionar</button>
         </div>
       </div>
     </form>
