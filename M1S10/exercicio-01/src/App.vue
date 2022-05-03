@@ -32,17 +32,14 @@ export default {
   margin-top: 60px;
 }
 
-.header-leave-to,
 .header-enter-from {
   opacity: 0;
 }
 
-.header-leave-active,
 .header-enter-active {
   transition: opacity 2s;
 }
 
-.header-leave-from,
 .header-enter-to {
   opacity: 1;
 }
