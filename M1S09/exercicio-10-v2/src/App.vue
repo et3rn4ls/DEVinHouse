@@ -30,10 +30,11 @@
         <h5>Carta Dealer: {{ cartaDealer }} </h5>
         <h5>Sua carta: {{ carta }} </h5>
       </div>
-      <div class="col-12">
-        <button :disabled="!estado" class="btn btn-success btn-sm" @click="novaCarta">Nova Carta</button>
-        <button :disabled="!estado" class="btn btn-warning btn-sm" @click="pararJogo">Quero parar</button>
+      <div>
+        <button type="button" :disabled="!estado" class="btn btn-success btn-sm" @click="novaCarta">Nova Carta</button>
+        <button type="button" :disabled="!estado" class="btn btn-warning btn-sm" @click="pararJogo">Quero parar</button>
       </div>
+      <br>
       <div class="col-12">
         <span class="badge bg-danger" v-show="msg.length > 0">Você não pode parar com menos de 14 pontos!</span>
       </div>
