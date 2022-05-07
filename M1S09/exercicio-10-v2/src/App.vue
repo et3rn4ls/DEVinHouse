@@ -116,7 +116,9 @@ export default {
       },
       set(value) {
         this.pontuacaoDealer += value;
-        if (this.pontuacaoDealer === 21) {
+        if ((this.pontuacao > 21 && this.pontuacaoDealer > 21) || (this.pontuacao === 21 && this.pontuacaoDealer === 21)) {
+          this.estadoPartida = 'empate';
+        } else if (this.pontuacaoDealer === 21) {
           this.estadoPartida = 'perdeu';
           this.estado = false;
         } else if (this.pontuacaoDealer > 21) {
