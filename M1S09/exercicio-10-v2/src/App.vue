@@ -27,8 +27,8 @@
       </div>
       <hr>
       <div class="col-12">
-        <h5>Carta Dealer: {{ cartaDealer }} </h5>
-        <h5>Sua carta: {{ carta }} </h5>
+        <h5>Cartas Dealer: {{ cartasDealer }}  </h5>
+        <h5>Suas cartas: {{ minhasCartas }} </h5>
       </div>
       <div>
         <button type="button" :disabled="!estado" class="btn btn-success btn-sm" @click="novaCarta">Nova Carta</button>
@@ -53,7 +53,9 @@ export default {
       pontuacaoDealer: 0,
       carta: '',
       cartaDealer: '',
-      estadoPartida: ''
+      estadoPartida: '',
+      minhasCartas: [],
+      cartasDealer: []
     }
   },
   methods: {
@@ -66,11 +68,14 @@ export default {
       this.carta = '';
       this.cartaDealer = '';
       this.estadoPartida = '';
+      this.minhasCartas = [];
+      this.cartasDealer = [];
     },
     novaCarta() {
       this.msg = '';
       this.carta = Math.round(Math.random() * (11 * 1) + 1);
       this.pontuacaoAtual = this.carta;
+      this.minhasCartas.push(this.carta);
       this.novaCartaDealer();
     },
     novaCartaDealer() {
@@ -78,6 +83,7 @@ export default {
         this.cartaDealer = Math.round(Math.random() * (11 * 1) + 1);
         this.pontuacaoAtualDealer = this.cartaDealer;
       }
+      this.cartasDealer.push(this.cartaDealer);
     },
     pararJogo() {
       if (this.pontuacaoAtual < 14) {
