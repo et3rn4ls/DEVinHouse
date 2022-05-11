@@ -1,6 +1,6 @@
 <template>
   <div class="cadastro">
-      <h3>Cadastro</h3>
+      <h3>Cadastro de Pessoas</h3>
       <br><br>
       <vee-form @submit="salvarPessoa" :validation-schema="schema" v-slot="{ errors }">
         <div class="row g-2">
@@ -58,7 +58,7 @@ export default {
     return {
       schema: {
         nome: "required|nomeCompleto",
-        dataNascimento: "required|dataNasc",
+        dataNascimento: "required|dataNasc"
       },
       pessoa: {}
     }
@@ -68,7 +68,7 @@ export default {
       if (this.$store.state.pessoas.length === 0) {
         this.pessoa.id = 1;
       } else {
-        this.pessoa.id = this.$store.state.pessoas[this.$store.state.pessoas.length -1].id + 1;
+        this.pessoa.id = this.$store.state.pessoas[this.$store.state.pessoas.length - 1].id + 1;
       }
       this.$store.commit('inserir', this.pessoa);
       this.pessoa = {};
