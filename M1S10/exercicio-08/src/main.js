@@ -27,8 +27,16 @@ const store = createStore({
         inserir(state, pessoa) {
             state.pessoas.push(pessoa);
         },
-        remover(state, pessoa) {
-            state.pessoas.splice(pessoa, 1);
+        remover(state, id) {
+            let indice;
+            for (let i=0; i < state.pessoas.length ; i++) {
+                if (id === state.pessoas[i].id) {
+                    indice = i;
+                }
+            }
+            if (indice) {
+                state.pessoas.splice(indice, 1);
+            }
         }
     }
 });

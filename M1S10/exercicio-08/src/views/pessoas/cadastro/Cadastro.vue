@@ -65,7 +65,12 @@ export default {
   },
   methods: {
     salvarPessoa() {
-      this.pessoa.id = this.$store.state.pessoas.length + 1;
+      if (this.$store.state.pessoas.length === 0) {
+        this.pessoa.id = 1
+      } else {
+        this.pessoa.id = this.$store.state.pessoas[this.$store.state.pessoas.length -1].id +1
+      }
+      //this.pessoa.id = this.$store.state.pessoas.length + 1;
       this.$store.commit('inserir', this.pessoa);
       this.pessoa = {};
     }

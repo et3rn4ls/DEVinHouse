@@ -24,7 +24,7 @@
             <td v-text="p.nome"></td>
             <td v-text="p.dataNascimento"></td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm ms-1" @click="excluirPessoa">Excluir</button>
+              <button type="button" class="btn btn-danger btn-sm ms-1" @click="excluirPessoa(p.id)">Excluir</button>
             </td>
           </tr>
         </tbody>
@@ -43,8 +43,8 @@ export default {
     buscarPessoas() {
       this.listaPessoas = this.$store.state.pessoas;
     },
-    excluirPessoa() {
-      this.$store.commit('remover', this.pessoa);
+    excluirPessoa(id) {
+      this.$store.commit('remover', id);
     }
   }
 }
