@@ -2,6 +2,10 @@
     <div class="container">
       <h3>Buscar Pessoa</h3>
       <hr>
+      <div class="col-12" v-show="errorMsg.length > 0">
+        <span class="badge bg-danger"> {{ errorMsg }}</span>
+        <hr>
+      </div>
       <div class="row g-2">
         <div class="col-md-4">
           <label for="id">Informe o ID: </label>
@@ -64,7 +68,7 @@ export default {
                          'Data de nascimento: ' + response.data.dataNascimento + '\n' +
                          'CEP: ' + response.data.cep;
         }).catch((err) => {
-          this.retorno = err;
+          this.errorMsg = 'Ocorreu um erro: ' + err;
         });
     },
     listarTodas() {
@@ -72,7 +76,7 @@ export default {
         promise.then((response) => {
           this.listaPessoas = response.data;
         }).catch((err) => {
-          this.retorno = err;
+          this.errorMsg = 'Ocorreu um erro: ' + err;
         });
     },
     excluirPessoa(id) {
@@ -81,7 +85,7 @@ export default {
           this.retorno = 'Cadastro excluído: ' + response.data.nome;
           this.listarTodas();
         }).catch((err) => {
-          this.retorno = err;
+          this.errorMsg = 'Ocorreu um erro: ' + err;
         });
     }
   }
