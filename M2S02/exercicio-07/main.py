@@ -1,4 +1,4 @@
-import Math 
+import Math as calc
 
 while True:
     print("""
@@ -22,10 +22,10 @@ while True:
     num2 = int(input('Número 2: '))
 
     if op == 1:
-        print ('Resultado: ', Math.somar(num1, num2))
+        print ('Resultado: ', calc.somar(num1, num2))
     elif op == 2:
-        print ('Resultado: ', Math.subtrair(num1, num2))
+        print ('Resultado: ', calc.subtrair(num1, num2))
     elif op == 3:
-        print ('Resultado: ', Math.dividir(num1, num2))
+        print ('Resultado: ', calc.dividir(num1, num2))
     elif op == 4:
-        print ('Resultado: ', Math.multiplicar(num1, num2))
+        print ('Resultado: ', calc.multiplicar(num1, num2))
