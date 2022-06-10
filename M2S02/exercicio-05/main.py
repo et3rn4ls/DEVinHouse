@@ -1,4 +1,4 @@
-vogais = ['a', 'e', 'i', 'o', 'u']
+vogais = ('a', 'e', 'i', 'o', 'u')
 
 while True:
     letra = input('Informe uma letra: ')
