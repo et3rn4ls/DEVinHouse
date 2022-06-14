@@ -1,5 +1,5 @@
 def formatar(t, c="-"):
-    print(f'{c * 5} {t} {c * 5}')
+    print(f'{c * 24} {t} {c * 24}')
 
 texto = input('Digite um texto: ')
 caractere = input('Informe o caractere: ')
