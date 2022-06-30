@@ -1,4 +1,9 @@
 import json
+import os
+from os.path import exists
+
+filedb = os.path.join('./', 'data', 'enderecodb.json')
+enderecos = []
 
 class Endereco:
 
@@ -22,22 +27,27 @@ class Endereco:
         e.__salvar_endereco()
 
     def exibir_endereco():
-        a_file = open('./data/enderecos.json', 'r')
-        a_json = json.load(a_file)
-        pretty_json = json.dumps(a_json, indent=4)
-        a_file.close()
-        print(pretty_json)
+        with open(filedb) as enderecodb:
+            print(json.load(enderecodb))
 
     def __salvar_endereco(self):
-        print('Salvando...')
+        print('\nSalvando...')
         keys = ["logradouro", "numero", "complemento", "bairro", "cidade", "uf"]
         values = [self.logradouro, self.numero, self.complemento, self.bairro, self.cidade, self.uf]
         endereco = dict(zip(keys, values))
+        enderecos.append(endereco)
 
-        with open('./data/enderecos.json', 'w') as convert_file:
-            convert_file.write(json.dumps(endereco))
+        if exists(filedb):
+            with open(filedb) as enderecodb:
+                listaEnderecos = json.load(enderecodb)
+                listaEnderecos.append(endereco)
+            with open(filedb, "w") as enderecodbrw:
+                json.dump(listaEnderecos, enderecodbrw)
+        else:
+            with open(filedb, "w") as enderecodbrw:
+                json.dump(enderecos, enderecodbrw)
 
-        print('Endereço salvo!')
+        print('\nEndereço salvo!')
 
 if __name__ == "__main__":
 
