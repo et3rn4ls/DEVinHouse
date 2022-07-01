@@ -3,17 +3,19 @@ from Pessoa import Pessoa
 class Paciente(Pessoa):
 
     def __init__(self, rg: int, cpf: str, telefone: int, convenio: str, data_de_nascimento: str):
-        self.__rg = rg
-        self.__cpf = cpf
-        self.__telefone = telefone
-        self.__convenio = convenio
-        self.__data_de_nascimento = data_de_nascimento
+        self.rg = rg
+        self.cpf = cpf
+        self.telefone = telefone
+        self.convenio = convenio
+        self.data_de_nascimento = data_de_nascimento
     
-    def __cadastrar_paciente(self):
+    @staticmethod
+    def cadastrar_paciente():
         pass
 
-    def __exibir_paciente(self):
+    @staticmethod
+    def exibir_paciente():
         pass
 
-    def salvar_paciente(self):
+    def __salvar_paciente(self):
         pass

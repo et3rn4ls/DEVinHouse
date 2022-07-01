@@ -14,6 +14,7 @@ class Pessoa:
         self.celular = celular
         self.email = email
     
+    @staticmethod
     def cadastrar_pessoa():
         nome = input('Nome: ')
         celular = int(input('Celular: '))
@@ -22,6 +23,7 @@ class Pessoa:
         p = Pessoa(nome, celular, email)
         p.__salvar_pessoa()
 
+    @staticmethod
     def exibir_pessoa():
         with open(filedb) as pessoadb:
             print(json.load(pessoadb))
