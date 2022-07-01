@@ -15,6 +15,7 @@ class Endereco:
         self.cidade = cidade
         self.uf = uf
     
+    @staticmethod
     def cadastrar_endereco():
         logradouro = input('Logradouro: ')
         numero = int(input('Numero: '))
@@ -26,6 +27,7 @@ class Endereco:
         e = Endereco(logradouro, numero, complemento, bairro, cidade, uf)
         e.__salvar_endereco()
 
+    @staticmethod
     def exibir_endereco():
         with open(filedb) as enderecodb:
             print(json.load(enderecodb))
