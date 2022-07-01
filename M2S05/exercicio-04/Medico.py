@@ -4,12 +4,15 @@ from os.path import exists
 
 from Pessoa import Pessoa
 
+
 filedb = os.path.join('./', 'data', 'medicodb.json')
 medicos = []
 
 
 class Medico(Pessoa):
 
+    #def __init__(self, nome: str, celular: int, email: str, rg: int, cpf: str, telefone: int, convenio: str, data_de_nascimento: str):
+        #super().__init__(nome=nome, celular=celular, email=email)
     def __init__(self, crm: int, telefone_secundario: str):
         self.crm = crm
         self.telefone_secundario = telefone_secundario
