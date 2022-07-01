@@ -1,23 +1,26 @@
 from Medico import Medico
 from Paciente import Paciente
 
+
 class Agenda:
 
     def __init__(self, crm_medico: int, cpf_paciente: str, dia: int, mes: int, ano: int, hora: str, observacao: str):
-        self.__crm_medico = crm_medico
-        self.__cpf_paciente = cpf_paciente
-        self.__dia = dia
-        self.__mes = mes
-        self.__ano = ano
-        self.__hora = hora
-        self.__observacao = observacao
+        self.crm_medico = crm_medico
+        self.cpf_paciente = cpf_paciente
+        self.dia = dia
+        self.mes = mes
+        self.ano = ano
+        self.hora = hora
+        self.observacao = observacao
     
-    def __cadastrar_agenda(self):
+    @staticmethod
+    def cadastrar_agenda():
         pass
 
-    def __exibir_agenda(self):
+    @staticmethod
+    def exibir_agenda():
         pass
 
-    def salvar_agenda(self):
+    def __salvar_agenda(self):
         pass
 
