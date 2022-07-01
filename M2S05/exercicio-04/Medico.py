@@ -1,3 +1,7 @@
+import json
+import os
+from os.path import exists
+
 from Pessoa import Pessoa
 
 class Medico(Pessoa):

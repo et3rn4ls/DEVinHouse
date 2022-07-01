@@ -2,7 +2,7 @@ import json
 import os
 from os.path import exists
 
-#from Pessoa import Pessoa
+from Pessoa import Pessoa
 
 
 filedb = os.path.join('./', 'data', 'pacientedb.json')
