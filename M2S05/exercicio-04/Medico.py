@@ -1,18 +1,15 @@
 import json
 import os
-from os.path import exists
 
 from Pessoa import Pessoa
 
 
 filedb = os.path.join('./', 'data', 'medicodb.json')
-medicos = []
+medicos = {"medicos": []}
 
 
 class Medico(Pessoa):
 
-    #def __init__(self, nome: str, celular: int, email: str, rg: int, cpf: str, telefone: int, convenio: str, data_de_nascimento: str):
-        #super().__init__(nome=nome, celular=celular, email=email)
     def __init__(self, crm: int, telefone_secundario: str):
         self.crm = crm
         self.telefone_secundario = telefone_secundario
@@ -27,25 +24,30 @@ class Medico(Pessoa):
 
     @staticmethod
     def exibir_medico():
-        with open(filedb) as medicodb:
-            print(json.load(medicodb))
+        try:
+            with open(filedb) as medicodb:
+                print(json.load(medicodb))
+        except FileNotFoundError as exception:
+            print('\nNenhum cadastrado de medico localizado.')
+
 
     def __salvar_medico(self):
         print('\nSalvando ...')
         keys = ["crm", "telefone_secundario"]
         values = [self.crm, self.telefone_secundario]
         medico = dict(zip(keys, values))
-        medicos.append(medico)
+        medicos['medicos'].append(medico)
 
-        if exists(filedb):
-            with open(filedb) as medicodb:
+        try:
+            with open(filedb, 'r+') as medicodb:
                 listaMedicos = json.load(medicodb)
-                listaMedicos.append(medico)
-            with open(filedb, "w") as medicodbrw:
-                json.dump(listaMedicos, medicodbrw)
-        else:
-            with open(filedb, "w") as medicodbrw:
-                json.dump(medicos, medicodbrw)
+                listaMedicos['medicos'].append(medico)
+                medicodb.seek(0)
+                json.dump(listaMedicos, medicodb)
+        except FileNotFoundError as exception:
+            with open(filedb, 'w') as medicodb:
+                json.dump(medicos, medicodb)
+            self.__salvar_medico
 
         print('\nMedico salvo!')
 
