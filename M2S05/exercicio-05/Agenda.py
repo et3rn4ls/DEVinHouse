@@ -1,13 +1,12 @@
 import json
 import os
-from os.path import exists
 
 from Medico import Medico
 from Paciente import Paciente
 
 
 filedb = os.path.join('./', 'data', 'agendadb.json')
-agendas = []
+agendas = {"agendas": []}
 
 
 class Agenda(Paciente, Medico):
@@ -36,25 +35,30 @@ class Agenda(Paciente, Medico):
 
     @staticmethod
     def exibir_agenda():
-        with open(filedb) as agendadb:
-            print(json.load(agendadb))
+        try:
+            with open(filedb) as agendadb:
+                print(json.load(agendadb))
+        except FileNotFoundError as exception:
+            print('\nNenhum cadastro de agenda localizado.')
+
 
     def __salvar_agenda(self):
         print('\nSalvando...')
         keys = ["crm_medico", "cpf_paciente", "dia", "mes", "ano", "hora", "observacao"]
         values = [self.crm_medico, self.cpf_paciente, self.dia, self.mes, self.ano, self.ano, self.observacao]
         agenda = dict(zip(keys, values))
-        agendas.append(agenda)
+        agendas['agendas'].append(agenda)
 
-        if exists(filedb):
-            with open(filedb) as agendadb:
+        try:
+            with open(filedb, "r+") as agendadb:
                 listaAgendas = json.load(agendadb)
-                listaAgendas.append(agenda)
-            with open(filedb, "w") as agendadbrw:
-                json.dump(listaAgendas, agendadbrw)
-        else:
-            with open(filedb, "w") as agendadbrw:
-                json.dump(agendas, agendadbrw)
+                listaAgendas["agendas"].append(agenda)
+                agendadb.seek(0)
+                json.dump(listaAgendas, agendadb)
+        except FileNotFoundError as exception:
+            with open(filedb, "w") as agendadb:
+                json.dump(agendas, agendadb)
+            self.__salvar_agenda
 
         print('\nAgenda salva!')
 
