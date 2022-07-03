@@ -1,18 +1,15 @@
 import json
 import os
-from os.path import exists
 
 from Pessoa import Pessoa
 
 
 filedb = os.path.join('./', 'data', 'pacientedb.json')
-pacientes = []
+pacientes = {"pacientes": []}
 
 
 class Paciente(Pessoa):
 
-    #def __init__(self, nome: str, celular: int, email: str, rg: int, cpf: str, telefone: int, convenio: str, data_de_nascimento: str):
-        #super().__init__(nome=nome, celular=celular, email=email)
     def __init__(self, rg: int, cpf: str, telefone: int, convenio: str, data_de_nascimento: str):
         self.rg = rg
         self.cpf = cpf
@@ -33,25 +30,29 @@ class Paciente(Pessoa):
 
     @staticmethod
     def exibir_paciente():
-        with open(filedb) as pacientedb:
-            print(json.load(pacientedb))
+        try:
+            with open(filedb) as pacientedb:
+                print(json.load(pacientedb))
+        except FileNotFoundError as exception:
+            print('\nNenhum cadastrado de paciente localizado.')
 
     def __salvar_paciente(self):
         print('\nSalvando ...')
         keys = ["rg", "cpf", "telefone", "convenio", "data_de_nascimento"]
         values = [self.rg, self.cpf, self.telefone, self.convenio, self.data_de_nascimento]
         paciente = dict(zip(keys, values))
-        pacientes.append(paciente)
+        pacientes['pacientes'].append(paciente)
 
-        if exists(filedb):
-            with open(filedb) as pacientedb:
+        try:
+            with open(filedb, 'r+') as pacientedb:
                 listaPacientes = json.load(pacientedb)
-                listaPacientes.append(paciente)
-            with open(filedb, "w") as pacientedbrw:
-                json.dump(listaPacientes, pacientedbrw)
-        else:
-            with open(filedb, "w") as pacientedbrw:
-                json.dump(pacientes, pacientedbrw)
+                listaPacientes['pacientes'].append(paciente)
+                pacientedb.seek(0)
+                json.dump(listaPacientes, pacientedb)
+        except FileNotFoundError as exception:
+            with open(filedb, 'w') as pacientedb:
+                json.dump(pacientes, pacientedb)
+            self.__salvar_paciente
 
         print('\nPaciente salvo!')
 
