@@ -1,6 +1,8 @@
 import json
 import os
 
+from Endereco import Endereco
+
 
 filedb = os.path.join('./', 'data', 'pessoasdb.json')
 pessoas = {"pessoas": []}
@@ -21,6 +23,9 @@ class Pessoa:
 
         p = Pessoa(nome, celular, email)
         p.__salvar_pessoa()
+
+        print('\n---- Cadastro de Endereco ----')
+        Endereco.cadastrar_endereco()
 
     @staticmethod
     def exibir_pessoa():
@@ -48,7 +53,7 @@ class Pessoa:
                 json.dump(pessoas, pessoadb)
             self.__salvar_pessoa
 
-        print('\Cadastro salvo!')
+        print('\Cadastro de pessoa salvo!')
 
 
 if __name__ == "__main__":

@@ -16,6 +16,10 @@ class Medico(Pessoa):
     
     @staticmethod
     def cadastrar_medico():
+        print('\n---- Cadastro de Pessoa ----')
+        Pessoa.cadastrar_pessoa()
+
+        print('\n---- Cadastro do Medico ----')
         crm = int(input('CRM: '))
         telefone_secundario = input('Telefone secundario: ')
 
@@ -49,7 +53,7 @@ class Medico(Pessoa):
                 json.dump(medicos, medicodb)
             self.__salvar_medico
 
-        print('\nMedico salvo!')
+        print('\nCadastro do medico salvo!')
 
 
 if __name__ == "__main__":

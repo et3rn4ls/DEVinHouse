@@ -60,7 +60,7 @@ class Agenda(Paciente, Medico):
                 json.dump(agendas, agendadb)
             self.__salvar_agenda
 
-        print('\nAgenda salva!')
+        print('\nCadstro da agenda salvo!')
 
 
 if __name__ == "__main__":

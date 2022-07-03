@@ -19,6 +19,10 @@ class Paciente(Pessoa):
     
     @staticmethod
     def cadastrar_paciente():
+        print('\n---- Cadastro de Pessoa ----')
+        Pessoa.cadastrar_pessoa()
+
+        print('\n---- Cadastro do Paciente ----')
         rg = int(input('RG: '))
         cpf = input('CPF: ')
         telefone = int(input('Telefone: '))
@@ -27,6 +31,7 @@ class Paciente(Pessoa):
 
         p = Paciente(rg, cpf, telefone, convenio, data_de_nascimento)
         p.__salvar_paciente()
+
 
     @staticmethod
     def exibir_paciente():
@@ -54,7 +59,7 @@ class Paciente(Pessoa):
                 json.dump(pacientes, pacientedb)
             self.__salvar_paciente
 
-        print('\nPaciente salvo!')
+        print('\nCadastro do paciente salvo!')
 
 
 if __name__ == "__main__":

@@ -54,7 +54,7 @@ class Endereco:
                 json.dump(enderecos, enderecodb)
             self.__salvar_endereco
 
-        print('\nEndereço salvo!')
+        print('\nCadastro do endereço salvo!')
 
 
 if __name__ == "__main__":
