@@ -1,10 +1,9 @@
 import json
 import os
-from os.path import exists
 
 
 filedb = os.path.join('./', 'data', 'pessoasdb.json')
-pessoas = []
+pessoas = {"pessoas": []}
 
 
 class Pessoa:
@@ -25,25 +24,29 @@ class Pessoa:
 
     @staticmethod
     def exibir_pessoa():
-        with open(filedb) as pessoadb:
-            print(json.load(pessoadb))
+        try:
+            with open(filedb) as pessoadb:
+                print(json.load(pessoadb))
+        except FileNotFoundError as exception:
+            print('\nNenhum cadastrado de pessoa localizado.')
 
     def __salvar_pessoa(self):
         print('\nSalvando ...')
         keys = ["nome", "celular", "email"]
         values = [self.nome, self.celular, self.email]
         pessoa = dict(zip(keys, values))
-        pessoas.append(pessoa)
+        pessoas['pessoas'].append(pessoa)
 
-        if exists(filedb):
-            with open(filedb) as pessoadb:
+        try:
+            with open(filedb, 'r+') as pessoadb:
                 listaPessoas = json.load(pessoadb)
-                listaPessoas.append(pessoa)
-            with open(filedb, "w") as pessoadbrw:
-                json.dump(listaPessoas, pessoadbrw)
-        else:
-            with open(filedb, "w") as pessoadbrw:
-                json.dump(pessoas, pessoadbrw)
+                listaPessoas['pessoas'].append(pessoa)
+                pessoadb.seek(0)
+                json.dump(listaPessoas, pessoadb)
+        except FileNotFoundError as exception:
+            with open(filedb, 'w') as pessoadb:
+                json.dump(pessoas, pessoadb)
+            self.__salvar_pessoa
 
         print('\Cadastro salvo!')
 
