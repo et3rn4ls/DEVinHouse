@@ -1,9 +1,10 @@
 import json
 import os
-from os.path import exists
+
 
 filedb = os.path.join('./', 'data', 'enderecodb.json')
-enderecos = []
+enderecos = {"enderecos": []}
+
 
 class Endereco:
 
@@ -29,27 +30,32 @@ class Endereco:
 
     @staticmethod
     def exibir_endereco():
-        with open(filedb) as enderecodb:
-            print(json.load(enderecodb))
+        try:
+            with open(filedb) as enderecodb:
+                print(json.load(enderecodb))
+        except FileNotFoundError as exception:
+            print('\nNenhum cadastrado de endereco localizado.')
 
     def __salvar_endereco(self):
         print('\nSalvando...')
         keys = ["logradouro", "numero", "complemento", "bairro", "cidade", "uf"]
         values = [self.logradouro, self.numero, self.complemento, self.bairro, self.cidade, self.uf]
         endereco = dict(zip(keys, values))
-        enderecos.append(endereco)
+        enderecos['enderecos'].append(endereco)
 
-        if exists(filedb):
-            with open(filedb) as enderecodb:
+        try:
+            with open(filedb, 'r+') as enderecodb:
                 listaEnderecos = json.load(enderecodb)
-                listaEnderecos.append(endereco)
-            with open(filedb, "w") as enderecodbrw:
-                json.dump(listaEnderecos, enderecodbrw)
-        else:
-            with open(filedb, "w") as enderecodbrw:
-                json.dump(enderecos, enderecodbrw)
+                listaEnderecos['enderecos'].append(endereco)
+                enderecodb.seek(0)
+                json.dump(listaEnderecos, enderecodb)
+        except FileNotFoundError as exception:
+            with open(filedb, 'w') as enderecodb:
+                json.dump(enderecos, enderecodb)
+            self.__salvar_endereco
 
         print('\nEndereço salvo!')
+
 
 if __name__ == "__main__":
 
