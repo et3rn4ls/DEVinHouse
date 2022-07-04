@@ -30,7 +30,7 @@ class Paciente(Pessoa):
         convenio = input('Convenio: ')
         data_de_nascimento = input('Data de nascimento: ')
 
-        if len(cpf) == 0 or len(telefone) == 0 or len(convenio) ==0 or len(data_de_nascimento) == 0:
+        if len(cpf) == 0 or len(convenio) == 0 or len(data_de_nascimento) == 0:
             raise DEVinException('\n[ERRO] - Todos os campos sao obrigatorios!')
         else:
             p = Paciente(rg, cpf, telefone, convenio, data_de_nascimento)
