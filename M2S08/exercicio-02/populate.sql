@@ -31,16 +31,16 @@ INSERT INTO university.departamentos(nome_dpto) VALUES ('Artes, Comunicação e 
 INSERT INTO university.departamentos(nome_dpto) VALUES ('Ciências Agrárias');
 INSERT INTO university.departamentos(nome_dpto) VALUES ('Ciências Biológicas');
 
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('9,50', 4, 'A');
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('6,80', 2, 'A');
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('2,00', 24, 'R');
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('5,50', 1, 'A');
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('7,75', 3, 'A');
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('3,90', 9, 'R');
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('10,00', 0, 'A');
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('8,33', 2, 'A');
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('7,50', 5, 'A');
-INSERT INTO university.matriculas(nota, faltas, status) VALUES ('6,45', 38, 'R');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (1, '9.50', 4, 'A');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (2, '6.80', 2, 'A');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (3, '2.00', 24, 'R');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (4, '5.50', 1, 'A');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (5, '7.75', 3, 'A');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (6, '3.90', 9, 'R');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (7, '10.00', 0, 'A');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (8, '8.33', 2, 'A');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (9, '7.50', 5, 'A');
+INSERT INTO university.matriculas(semestre, nota, faltas, status) VALUES (10, '6.45', 38, 'R');
 
 INSERT INTO university.disciplinas(nome_disc, carga_horaria) VALUES ('Direito Penal', 200);
 INSERT INTO university.disciplinas(nome_disc, carga_horaria) VALUES ('Anatomia Animal', 180);
